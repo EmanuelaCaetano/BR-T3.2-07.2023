@@ -1,6 +1,6 @@
 import pygame
 
-from dino_runner.utils.constants import RUNNING, JUMPING
+from dino_runner.utils.constants import RUNNING, JUMPING, DUCKING
 
 X_POS = 80
 Y_POS = 310
@@ -15,6 +15,7 @@ class Dinosaur:
         
         self.dino_run = True
         self.dino_jump = False
+        self.dino_duck = False #criação da variavel duck
         self.step_index = 0
         self.jump_vel = JUMP_VEL
     
@@ -40,21 +41,32 @@ class Dinosaur:
             self.dino_rect.y = Y_POS
             self.jump_vel = JUMP_VEL
     
-    def duck():
-        pass
-        
+    def duck(self): #abaixando
+        self.image = DUCKING[0]                #partindo do 0
+        self.dino_rect = self.image.get_rect() #pegando a imagem certa
+        self.dino_rect.x = X_POS               #plano cartesiano 
+        self.dino_rect.y = Y_POS + 30
+        self.dino_duck = False                 #deixando a ação no off
+
     
-    def update(self, user_input):
+    def update(self, user_input):         #alteraçãol para agora aceitar o duck
         if user_input[pygame.K_UP] and not self.dino_jump:
             self.dino_jump = True
             self.dino_run = False
-        elif not self.dino_jump:
+            self.dino_duck = False
+        elif user_input[pygame.K_DOWN] and not self.dino_jump:
+            self.dino_run = False
+            self.dino_duck = True
+        elif not self.dino_jump and not self.dino_duck:
             self.dino_run = True
+
             
         if self.dino_run:
             self.run()
         elif self.dino_jump:
-            self.jump()                
+            self.jump()
+        elif self.dino_duck: #adicionando mais um estado para o dino
+            self.duck()                
             
     
     def draw(self, screen):
