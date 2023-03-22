@@ -1,11 +1,22 @@
 import pygame
 import os
+import pygame.mixer
+
+pygame.mixer.pre_init(441, -16, 1, 51)
+pygame.init()
 
 # Global Constants
 TITLE = "Dino Runner"
 SCREEN_HEIGHT = 600 #alteração do posicionamento
 SCREEN_WIDTH = 1100
 FPS = 30
+
+SMALL_CACTUS_Y_POS = 325
+LARGE_CACTUS_Y_POS = 300
+BIRD_Y_POS = 250
+
+DEFAULT_TYPE = "default"
+SHIELD_TYPE = "shield"
 
 FONT_STYLE = "freesansbold.ttf"
 
@@ -71,5 +82,7 @@ HAMMER = pygame.image.load(os.path.join(IMG_DIR, 'Other/hammer.png'))
 BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
 
 HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
+
+SONG = pygame.mixer.Sound(os.path.join(IMG_DIR, 'Other/song.wav'))
 
 DEFAULT_TYPE = "default"
