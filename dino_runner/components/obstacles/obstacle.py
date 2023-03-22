@@ -14,3 +14,5 @@ class Obstacle:
         
         if self.rect.x < -self.rect.width:
             obstacles.pop()        
+
+    
