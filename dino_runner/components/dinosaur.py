@@ -2,9 +2,9 @@ import pygame
 import pygame.mixer
 
 
-from dino_runner.utils.constants import RUNNING, JUMPING, DUCKING, DEFAULT_TYPE,SHIELD_TYPE, DUCKING_SHIELD, JUMPING_SHIELD, RUNNING_SHIELD, SONG
+from dino_runner.utils.constants import RUNNING, JUMPING, DUCKING, DEFAULT_TYPE,SHIELD_TYPE, DUCKING_SHIELD, JUMPING_SHIELD, RUNNING_SHIELD, SONG, SONG2
 
-pygame.mixer.pre_init(44100, -16, 2, 512)
+pygame.mixer.pre_init()
 pygame.init()
 
 
@@ -13,8 +13,8 @@ JUMP_IMG = {DEFAULT_TYPE: JUMPING, SHIELD_TYPE:JUMPING_SHIELD}
 RUN_IMG = {DEFAULT_TYPE: RUNNING, SHIELD_TYPE:RUNNING_SHIELD}
 
 X_POS = 80
-Y_POS = 310
-Y_POS_DUCK = 340
+Y_POS = 310 
+Y_POS_DUCK = 340 
 JUMP_VEL = 8.5
 
 class Dinosaur:
@@ -35,6 +35,8 @@ class Dinosaur:
     
     def run(self):
         self.image = RUN_IMG[self.type][self.step_index//5]
+        run_sound = pygame.mixer.Sound(SONG2)
+        run_sound.play()
          
         self.dino_rect.y = Y_POS
         self.step_index+=1        

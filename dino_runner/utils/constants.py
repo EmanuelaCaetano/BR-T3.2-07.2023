@@ -2,7 +2,7 @@ import pygame
 import os
 import pygame.mixer
 
-pygame.mixer.pre_init(441, -16, 1, 51)
+pygame.mixer.pre_init()
 pygame.init()
 
 # Global Constants
@@ -84,5 +84,16 @@ BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
 HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
 
 SONG = pygame.mixer.Sound(os.path.join(IMG_DIR, 'Other/song.wav'))
+SONG2 = pygame.mixer.Sound(os.path.join(IMG_DIR, 'Other/song2.mp3'))
 
 DEFAULT_TYPE = "default"
+
+GAME_OVER = pygame.image.load(os.path.join(IMG_DIR, 'Other/GameOver.png'))
+
+BOOM = pygame.image.load(os.path.join(IMG_DIR, 'Other/boom.png'))
+
+FIRST = pygame.image.load(os.path.join(IMG_DIR, 'Other/first.png'))
+
+TRY_AGAIN = pygame.image.load(os.path.join(IMG_DIR, 'Other/Try.png'))
+
+APPLE = pygame.image.load(os.path.join(IMG_DIR, 'Other/Apple.png'))
